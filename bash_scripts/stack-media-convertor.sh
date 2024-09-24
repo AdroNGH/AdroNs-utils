@@ -10,7 +10,7 @@ fi
 
 find "$1" \( -iname "*.mp3" -o -iname "*.m4a" \) | while read -r file; do
     fileName="${file%.*}"
-    outputFile="{$fileName}.ogg"
+    outputFile="$fileName.ogg"
     if ffmpeg -nostdin -i "$file" -c:a libvorbis "$outputFile"; then
         echo "Success: $file converted into $outputFile"
     else
